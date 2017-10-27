@@ -18,6 +18,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QWidget>
 
@@ -27,7 +28,6 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QLabel *image_canvas;
     QGroupBox *file_handling_section;
     QPushButton *save_button;
     QPushButton *load_button;
@@ -40,6 +40,9 @@ public:
     QPushButton *rotate_ninty;
     QPushButton *rotate_negative_ninty;
     QPushButton *apply_button;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents_3;
+    QLabel *image_canvas;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -48,10 +51,6 @@ public:
         MainWindow->resize(950, 600);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        image_canvas = new QLabel(centralWidget);
-        image_canvas->setObjectName(QStringLiteral("image_canvas"));
-        image_canvas->setGeometry(QRect(230, 10, 711, 581));
-        image_canvas->setFrameShape(QFrame::Box);
         file_handling_section = new QGroupBox(centralWidget);
         file_handling_section->setObjectName(QStringLiteral("file_handling_section"));
         file_handling_section->setGeometry(QRect(20, 10, 181, 71));
@@ -92,6 +91,18 @@ public:
         apply_button = new QPushButton(centralWidget);
         apply_button->setObjectName(QStringLiteral("apply_button"));
         apply_button->setGeometry(QRect(20, 360, 89, 25));
+        scrollArea = new QScrollArea(centralWidget);
+        scrollArea->setObjectName(QStringLiteral("scrollArea"));
+        scrollArea->setGeometry(QRect(230, 30, 691, 531));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents_3 = new QWidget();
+        scrollAreaWidgetContents_3->setObjectName(QStringLiteral("scrollAreaWidgetContents_3"));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 689, 529));
+        scrollArea->setWidget(scrollAreaWidgetContents_3);
+        image_canvas = new QLabel(centralWidget);
+        image_canvas->setObjectName(QStringLiteral("image_canvas"));
+        image_canvas->setGeometry(QRect(90, 460, 51, 41));
+        image_canvas->setFrameShape(QFrame::Box);
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -102,7 +113,6 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        image_canvas->setText(QString());
         file_handling_section->setTitle(QApplication::translate("MainWindow", "Image File", Q_NULLPTR));
         save_button->setText(QApplication::translate("MainWindow", "save", Q_NULLPTR));
         load_button->setText(QApplication::translate("MainWindow", "load", Q_NULLPTR));
@@ -114,6 +124,7 @@ public:
         rotate_ninty->setText(QApplication::translate("MainWindow", "+90", Q_NULLPTR));
         rotate_negative_ninty->setText(QApplication::translate("MainWindow", "-90", Q_NULLPTR));
         apply_button->setText(QApplication::translate("MainWindow", "Apply", Q_NULLPTR));
+        image_canvas->setText(QString());
     } // retranslateUi
 
 };

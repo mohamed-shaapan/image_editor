@@ -15,7 +15,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //QPixmap pixmap = *(ui->image_canvas->pixmap());
 
+    ui->scrollArea->setBackgroundRole(QPalette::Dark);
+    ui->scrollArea->setWidget(ui->image_canvas);
 
 }
 
@@ -41,7 +44,7 @@ void MainWindow::on_save_button_clicked(){
 
     QFile file(fileName);
     file.open(QIODevice::WriteOnly);
-    ui->image_canvas->pixmap()->save(&file, "PNG");
+    ui->image_canvas->pixmap()->save(&file, "jpg");
 
 
 
@@ -61,6 +64,11 @@ void MainWindow::on_apply_button_clicked(){
     //ui->image_container->setBackgroundRole(QPalette::Dark);
     //ui->image_container->setWidget(ui->image_canvas);
     //setCentralWidget(ui->image_container);
+
+
+    //scrollArea = new QScrollArea;
+    //ui->scrollArea->setBackgroundRole(QPalette::Dark);
+    //ui->scrollArea->setWidget(ui->image_canvas);
 
 
 
