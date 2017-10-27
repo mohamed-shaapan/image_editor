@@ -215,6 +215,7 @@ DIST          = ../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/fe
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/qt_config.prf \
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/spec_post.prf \
+		../project_01_try/.qmake.stash \
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/toolchain.prf \
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -407,6 +408,7 @@ Makefile: ../project_01_try/project_01_try.pro ../../../Downloads/installed_soft
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/qt_config.prf \
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/toolchain.prf \
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -591,6 +593,7 @@ Makefile: ../project_01_try/project_01_try.pro ../../../Downloads/installed_soft
 ../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/qt_config.prf:
 ../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/toolchain.prf:
 ../../../Downloads/installed_software/qt/5.9.2/gcc_64/mkspecs/features/default_pre.prf:
@@ -1010,7 +1013,51 @@ mainwindow.o: ../project_01_try/mainwindow.cpp ../project_01_try/mainwindow.h \
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtGui/qicon.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtCore/QVariant \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/QAction \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qaction.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/QApplication \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtCore/qeventloop.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtGui/qguiapplication.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtGui/qinputmethod.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/QGroupBox \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qgroupbox.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qframe.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/QHeaderView \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtGui/qvalidator.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qslider.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qstyle.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/QLabel \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qlabel.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/QPushButton \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/QSlider \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/QWidget \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/QFileDialog \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qfiledialog.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtCore/qdir.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtCore/qfileinfo.h \
+		../../../Downloads/installed_software/qt/5.9.2/gcc_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../project_01_try/mainwindow.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

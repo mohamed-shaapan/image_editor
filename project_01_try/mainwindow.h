@@ -20,6 +20,18 @@ private slots:
 
     void on_save_button_clicked();
 
+    void on_apply_button_clicked();
+
+    void on_zoom_slider_sliderMoved(int position);
+
+    void on_zoom_slider_sliderPressed();
+
+    void on_rotate_slider_sliderMoved(int position);
+
+    void on_rotate_ninty_clicked();
+
+    void on_rotate_negative_ninty_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

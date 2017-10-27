@@ -34,10 +34,11 @@ public:
     QGroupBox *action_history_section;
     QPushButton *undo_button;
     QPushButton *redo_button;
-    QGroupBox *resize_image_section;
-    QSlider *resize_slider;
+    QGroupBox *zoom_section;
+    QSlider *zoom_slider;
     QGroupBox *rotate_image_section;
-    QSlider *rotate_slider;
+    QPushButton *rotate_ninty;
+    QPushButton *rotate_negative_ninty;
     QPushButton *apply_button;
 
     void setupUi(QMainWindow *MainWindow)
@@ -69,25 +70,25 @@ public:
         redo_button = new QPushButton(action_history_section);
         redo_button->setObjectName(QStringLiteral("redo_button"));
         redo_button->setGeometry(QRect(100, 30, 71, 31));
-        resize_image_section = new QGroupBox(centralWidget);
-        resize_image_section->setObjectName(QStringLiteral("resize_image_section"));
-        resize_image_section->setGeometry(QRect(20, 180, 181, 71));
-        resize_slider = new QSlider(resize_image_section);
-        resize_slider->setObjectName(QStringLiteral("resize_slider"));
-        resize_slider->setGeometry(QRect(10, 40, 160, 16));
-        resize_slider->setMinimum(-100);
-        resize_slider->setMaximum(100);
-        resize_slider->setValue(0);
-        resize_slider->setOrientation(Qt::Horizontal);
+        zoom_section = new QGroupBox(centralWidget);
+        zoom_section->setObjectName(QStringLiteral("zoom_section"));
+        zoom_section->setGeometry(QRect(20, 180, 181, 71));
+        zoom_slider = new QSlider(zoom_section);
+        zoom_slider->setObjectName(QStringLiteral("zoom_slider"));
+        zoom_slider->setGeometry(QRect(10, 40, 160, 16));
+        zoom_slider->setMinimum(-100);
+        zoom_slider->setMaximum(100);
+        zoom_slider->setValue(0);
+        zoom_slider->setOrientation(Qt::Horizontal);
         rotate_image_section = new QGroupBox(centralWidget);
         rotate_image_section->setObjectName(QStringLiteral("rotate_image_section"));
         rotate_image_section->setGeometry(QRect(20, 270, 181, 71));
-        rotate_slider = new QSlider(rotate_image_section);
-        rotate_slider->setObjectName(QStringLiteral("rotate_slider"));
-        rotate_slider->setGeometry(QRect(10, 40, 160, 16));
-        rotate_slider->setMinimum(-100);
-        rotate_slider->setMaximum(100);
-        rotate_slider->setOrientation(Qt::Horizontal);
+        rotate_ninty = new QPushButton(rotate_image_section);
+        rotate_ninty->setObjectName(QStringLiteral("rotate_ninty"));
+        rotate_ninty->setGeometry(QRect(110, 30, 41, 31));
+        rotate_negative_ninty = new QPushButton(rotate_image_section);
+        rotate_negative_ninty->setObjectName(QStringLiteral("rotate_negative_ninty"));
+        rotate_negative_ninty->setGeometry(QRect(30, 30, 41, 31));
         apply_button = new QPushButton(centralWidget);
         apply_button->setObjectName(QStringLiteral("apply_button"));
         apply_button->setGeometry(QRect(20, 360, 89, 25));
@@ -108,8 +109,10 @@ public:
         action_history_section->setTitle(QApplication::translate("MainWindow", "Action History", Q_NULLPTR));
         undo_button->setText(QApplication::translate("MainWindow", "Undo", Q_NULLPTR));
         redo_button->setText(QApplication::translate("MainWindow", "Redo", Q_NULLPTR));
-        resize_image_section->setTitle(QApplication::translate("MainWindow", "Resize Image", Q_NULLPTR));
+        zoom_section->setTitle(QApplication::translate("MainWindow", "Zoom", Q_NULLPTR));
         rotate_image_section->setTitle(QApplication::translate("MainWindow", "Rotate Image", Q_NULLPTR));
+        rotate_ninty->setText(QApplication::translate("MainWindow", "+90", Q_NULLPTR));
+        rotate_negative_ninty->setText(QApplication::translate("MainWindow", "-90", Q_NULLPTR));
         apply_button->setText(QApplication::translate("MainWindow", "Apply", Q_NULLPTR));
     } // retranslateUi
 
