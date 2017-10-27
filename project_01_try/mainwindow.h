@@ -34,6 +34,8 @@ private slots:
 
     void on_zoom_slider_valueChanged(int value);
 
+    void on_zoom_slider_sliderReleased();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>10</y>
+      <y>30</y>
       <width>181</width>
       <height>71</height>
      </rect>
@@ -57,7 +57,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>90</y>
+      <y>110</y>
       <width>181</width>
       <height>71</height>
      </rect>
@@ -96,7 +96,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>180</y>
+      <y>200</y>
       <width>181</width>
       <height>71</height>
      </rect>
@@ -134,7 +134,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>270</y>
+      <y>290</y>
       <width>181</width>
       <height>71</height>
      </rect>
@@ -173,7 +173,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>360</y>
+      <y>380</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -185,9 +185,9 @@
    <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>220</x>
       <y>30</y>
-      <width>691</width>
+      <width>701</width>
       <height>531</height>
      </rect>
     </property>
@@ -199,7 +199,7 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>689</width>
+       <width>699</width>
        <height>529</height>
       </rect>
      </property>
@@ -208,8 +208,27 @@
    <widget class="QLabel" name="image_canvas">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>460</y>
+      <x>150</x>
+      <y>540</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="original_image">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>540</y>
       <width>51</width>
       <height>41</height>
      </rect>

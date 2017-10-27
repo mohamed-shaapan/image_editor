@@ -17,10 +17,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //QPixmap pixmap = *(ui->image_canvas->pixmap());
-
     ui->scrollArea->setBackgroundRole(QPalette::Dark);
     ui->scrollArea->setWidget(ui->image_canvas);
+    ui->original_image->hide();
 
 }
 
@@ -33,13 +32,16 @@ void MainWindow::on_load_button_clicked(){
 
     QString file_name=QFileDialog::getOpenFileName(this, tr("choose"), "", tr("Images (*.png *.jpg *.bmp *.jpeg)"));
 
+
     QPixmap pixmap;
     pixmap.load(file_name);
     ui->image_canvas->setPixmap(pixmap);
+    ui->original_image->setPixmap(pixmap);
 
     image_original_width=pixmap.width();
     image_original_height=pixmap.height();
     ui->zoom_slider->setValue(100);
+
 
 
 }
@@ -75,23 +77,6 @@ void MainWindow::on_zoom_slider_sliderPressed(){
 
 void MainWindow::on_zoom_slider_sliderMoved(int position){
 
-    /*QPixmap pixmap_new;
-    // get image from canvas
-    QPixmap pixmap = *(ui->image_canvas->pixmap());
-    //
-    int change = position-slider_initial_value ;
-    // width of pixmap
-    int width = pixmap.width() , maxWidth = ui->image_canvas->maximumWidth();
-    int height = pixmap.height() , maxHeight = ui->image_canvas->maximumHeight();
-    // create scaled pixmap
-    if((change>0 && width+change<maxWidth && height+change<maxHeight)
-            || (change<0 && width+change>0 && height+change>0)){
-        pixmap_new = pixmap.scaled(width+change,height+change,Qt::KeepAspectRatio,Qt::SmoothTransformation);
-    }
-    // set ui image to new pixmap
-    if(!pixmap_new.isNull())ui->image_canvas->setPixmap(pixmap_new);
-    //slider_initial_value=position;*/
-
 
 }
 
@@ -107,6 +92,10 @@ void MainWindow::on_rotate_ninty_clicked()
     pixmap = pixmap.transformed(rm);
     ui->image_canvas->setPixmap(pixmap);
 
+    pixmap = *(ui->original_image->pixmap());
+    pixmap = pixmap.transformed(rm);
+    ui->original_image->setPixmap(pixmap);
+
 }
 
 void MainWindow::on_rotate_negative_ninty_clicked()
@@ -117,6 +106,10 @@ void MainWindow::on_rotate_negative_ninty_clicked()
     rm.rotate(-90);
     pixmap = pixmap.transformed(rm);
     ui->image_canvas->setPixmap(pixmap);
+
+    pixmap = *(ui->original_image->pixmap());
+    pixmap = pixmap.transformed(rm);
+    ui->original_image->setPixmap(pixmap);
 }
 
 void MainWindow::on_zoom_slider_valueChanged(int value)
@@ -135,5 +128,21 @@ void MainWindow::on_zoom_slider_valueChanged(int value)
     // set ui image to new pixmap
     if(!pixmap_new.isNull())ui->image_canvas->setPixmap(pixmap_new);
     //slider_initial_value=value;
+
+}
+
+void MainWindow::on_zoom_slider_sliderReleased()
+{
+    int width=ui->image_canvas->pixmap()->width();
+    int height=ui->image_canvas->pixmap()->height();
+
+    QPixmap pixmap = *(ui->original_image->pixmap());
+
+    QPixmap pixmap_new=pixmap.scaled(width,height,Qt::KeepAspectRatio,Qt::SmoothTransformation);
+
+    ui->image_canvas->setPixmap(pixmap_new);
+
+
+
 
 }

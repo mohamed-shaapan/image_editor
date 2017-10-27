@@ -43,6 +43,7 @@ public:
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents_3;
     QLabel *image_canvas;
+    QLabel *original_image;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -53,7 +54,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         file_handling_section = new QGroupBox(centralWidget);
         file_handling_section->setObjectName(QStringLiteral("file_handling_section"));
-        file_handling_section->setGeometry(QRect(20, 10, 181, 71));
+        file_handling_section->setGeometry(QRect(20, 30, 181, 71));
         save_button = new QPushButton(file_handling_section);
         save_button->setObjectName(QStringLiteral("save_button"));
         save_button->setGeometry(QRect(10, 30, 71, 31));
@@ -62,7 +63,7 @@ public:
         load_button->setGeometry(QRect(100, 30, 71, 31));
         action_history_section = new QGroupBox(centralWidget);
         action_history_section->setObjectName(QStringLiteral("action_history_section"));
-        action_history_section->setGeometry(QRect(20, 90, 181, 71));
+        action_history_section->setGeometry(QRect(20, 110, 181, 71));
         undo_button = new QPushButton(action_history_section);
         undo_button->setObjectName(QStringLiteral("undo_button"));
         undo_button->setGeometry(QRect(10, 30, 71, 31));
@@ -71,7 +72,7 @@ public:
         redo_button->setGeometry(QRect(100, 30, 71, 31));
         zoom_section = new QGroupBox(centralWidget);
         zoom_section->setObjectName(QStringLiteral("zoom_section"));
-        zoom_section->setGeometry(QRect(20, 180, 181, 71));
+        zoom_section->setGeometry(QRect(20, 200, 181, 71));
         zoom_slider = new QSlider(zoom_section);
         zoom_slider->setObjectName(QStringLiteral("zoom_slider"));
         zoom_slider->setGeometry(QRect(10, 40, 160, 16));
@@ -82,7 +83,7 @@ public:
         zoom_slider->setOrientation(Qt::Horizontal);
         rotate_image_section = new QGroupBox(centralWidget);
         rotate_image_section->setObjectName(QStringLiteral("rotate_image_section"));
-        rotate_image_section->setGeometry(QRect(20, 270, 181, 71));
+        rotate_image_section->setGeometry(QRect(20, 290, 181, 71));
         rotate_ninty = new QPushButton(rotate_image_section);
         rotate_ninty->setObjectName(QStringLiteral("rotate_ninty"));
         rotate_ninty->setGeometry(QRect(110, 30, 41, 31));
@@ -91,19 +92,24 @@ public:
         rotate_negative_ninty->setGeometry(QRect(30, 30, 41, 31));
         apply_button = new QPushButton(centralWidget);
         apply_button->setObjectName(QStringLiteral("apply_button"));
-        apply_button->setGeometry(QRect(20, 360, 89, 25));
+        apply_button->setGeometry(QRect(20, 380, 89, 25));
         scrollArea = new QScrollArea(centralWidget);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
-        scrollArea->setGeometry(QRect(230, 30, 691, 531));
+        scrollArea->setGeometry(QRect(220, 30, 701, 531));
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName(QStringLiteral("scrollAreaWidgetContents_3"));
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 689, 529));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 699, 529));
         scrollArea->setWidget(scrollAreaWidgetContents_3);
         image_canvas = new QLabel(centralWidget);
         image_canvas->setObjectName(QStringLiteral("image_canvas"));
-        image_canvas->setGeometry(QRect(90, 460, 51, 41));
+        image_canvas->setGeometry(QRect(150, 540, 51, 41));
         image_canvas->setFrameShape(QFrame::Box);
+        original_image = new QLabel(centralWidget);
+        original_image->setObjectName(QStringLiteral("original_image"));
+        original_image->setEnabled(true);
+        original_image->setGeometry(QRect(20, 540, 51, 41));
+        original_image->setFrameShape(QFrame::Box);
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -126,6 +132,7 @@ public:
         rotate_negative_ninty->setText(QApplication::translate("MainWindow", "-90", Q_NULLPTR));
         apply_button->setText(QApplication::translate("MainWindow", "Apply", Q_NULLPTR));
         image_canvas->setText(QString());
+        original_image->setText(QString());
     } // retranslateUi
 
 };
