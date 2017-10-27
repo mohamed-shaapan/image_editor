@@ -45,7 +45,6 @@ public:
     QLabel *original_image;
     QGroupBox *crop_image_section;
     QPushButton *apply_button;
-    QPushButton *crop_tool_button;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -118,10 +117,7 @@ public:
         crop_image_section->setGeometry(QRect(20, 380, 181, 91));
         apply_button = new QPushButton(crop_image_section);
         apply_button->setObjectName(QStringLiteral("apply_button"));
-        apply_button->setGeometry(QRect(120, 40, 51, 31));
-        crop_tool_button = new QPushButton(crop_image_section);
-        crop_tool_button->setObjectName(QStringLiteral("crop_tool_button"));
-        crop_tool_button->setGeometry(QRect(10, 40, 89, 31));
+        apply_button->setGeometry(QRect(10, 40, 101, 31));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -145,8 +141,7 @@ public:
         image_canvas->setText(QString());
         original_image->setText(QString());
         crop_image_section->setTitle(QApplication::translate("MainWindow", "Crop Image", Q_NULLPTR));
-        apply_button->setText(QApplication::translate("MainWindow", "Apply", Q_NULLPTR));
-        crop_tool_button->setText(QApplication::translate("MainWindow", "crop tool", Q_NULLPTR));
+        apply_button->setText(QApplication::translate("MainWindow", "Crop Canvas", Q_NULLPTR));
     } // retranslateUi
 
 };
