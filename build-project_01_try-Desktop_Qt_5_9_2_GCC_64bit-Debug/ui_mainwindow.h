@@ -39,17 +39,21 @@ public:
     QGroupBox *rotate_image_section;
     QPushButton *rotate_ninty;
     QPushButton *rotate_negative_ninty;
-    QPushButton *apply_button;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents_3;
     QLabel *image_canvas;
     QLabel *original_image;
+    QGroupBox *crop_image_section;
+    QPushButton *apply_button;
+    QPushButton *crop_tool_button;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(950, 600);
+        MainWindow->setMinimumSize(QSize(950, 600));
+        MainWindow->setMaximumSize(QSize(950, 600));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         file_handling_section = new QGroupBox(centralWidget);
@@ -90,26 +94,34 @@ public:
         rotate_negative_ninty = new QPushButton(rotate_image_section);
         rotate_negative_ninty->setObjectName(QStringLiteral("rotate_negative_ninty"));
         rotate_negative_ninty->setGeometry(QRect(30, 30, 41, 31));
-        apply_button = new QPushButton(centralWidget);
-        apply_button->setObjectName(QStringLiteral("apply_button"));
-        apply_button->setGeometry(QRect(20, 380, 89, 25));
         scrollArea = new QScrollArea(centralWidget);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
         scrollArea->setGeometry(QRect(220, 30, 701, 531));
+        scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName(QStringLiteral("scrollAreaWidgetContents_3"));
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 699, 529));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 685, 515));
         scrollArea->setWidget(scrollAreaWidgetContents_3);
         image_canvas = new QLabel(centralWidget);
         image_canvas->setObjectName(QStringLiteral("image_canvas"));
-        image_canvas->setGeometry(QRect(150, 540, 51, 41));
+        image_canvas->setGeometry(QRect(120, 540, 51, 41));
         image_canvas->setFrameShape(QFrame::Box);
         original_image = new QLabel(centralWidget);
         original_image->setObjectName(QStringLiteral("original_image"));
         original_image->setEnabled(true);
-        original_image->setGeometry(QRect(20, 540, 51, 41));
+        original_image->setGeometry(QRect(40, 540, 51, 41));
         original_image->setFrameShape(QFrame::Box);
+        crop_image_section = new QGroupBox(centralWidget);
+        crop_image_section->setObjectName(QStringLiteral("crop_image_section"));
+        crop_image_section->setGeometry(QRect(20, 380, 181, 91));
+        apply_button = new QPushButton(crop_image_section);
+        apply_button->setObjectName(QStringLiteral("apply_button"));
+        apply_button->setGeometry(QRect(120, 40, 51, 31));
+        crop_tool_button = new QPushButton(crop_image_section);
+        crop_tool_button->setObjectName(QStringLiteral("crop_tool_button"));
+        crop_tool_button->setGeometry(QRect(10, 40, 89, 31));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -130,9 +142,11 @@ public:
         rotate_image_section->setTitle(QApplication::translate("MainWindow", "Rotate Image", Q_NULLPTR));
         rotate_ninty->setText(QApplication::translate("MainWindow", "+90", Q_NULLPTR));
         rotate_negative_ninty->setText(QApplication::translate("MainWindow", "-90", Q_NULLPTR));
-        apply_button->setText(QApplication::translate("MainWindow", "Apply", Q_NULLPTR));
         image_canvas->setText(QString());
         original_image->setText(QString());
+        crop_image_section->setTitle(QApplication::translate("MainWindow", "Crop Image", Q_NULLPTR));
+        apply_button->setText(QApplication::translate("MainWindow", "Apply", Q_NULLPTR));
+        crop_tool_button->setText(QApplication::translate("MainWindow", "crop tool", Q_NULLPTR));
     } // retranslateUi
 
 };

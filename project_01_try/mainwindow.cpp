@@ -58,14 +58,6 @@ void MainWindow::on_save_button_clicked(){
 
 }
 
-void MainWindow::on_apply_button_clicked(){
-
-
-    qInfo( "C Style Info Message" );
-
-
-
-}
 
 
 void MainWindow::on_zoom_slider_sliderPressed(){
@@ -142,7 +134,16 @@ void MainWindow::on_zoom_slider_sliderReleased()
 
     ui->image_canvas->setPixmap(pixmap_new);
 
+}
 
+
+void MainWindow::on_apply_button_clicked(){
+
+    // 01 - obtain coordinates
+    QRect rect(5, 5, 680, 505);
+    QPixmap cropped=ui->scrollArea->grab(rect);
+    ui->image_canvas->setPixmap(cropped);
+    ui->original_image->setPixmap(cropped);
 
 
 }
