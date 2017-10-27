@@ -75,9 +75,10 @@ public:
         zoom_slider = new QSlider(zoom_section);
         zoom_slider->setObjectName(QStringLiteral("zoom_slider"));
         zoom_slider->setGeometry(QRect(10, 40, 160, 16));
-        zoom_slider->setMinimum(-100);
-        zoom_slider->setMaximum(100);
-        zoom_slider->setValue(0);
+        zoom_slider->setMinimum(20);
+        zoom_slider->setMaximum(200);
+        zoom_slider->setPageStep(30);
+        zoom_slider->setValue(100);
         zoom_slider->setOrientation(Qt::Horizontal);
         rotate_image_section = new QGroupBox(centralWidget);
         rotate_image_section->setObjectName(QStringLiteral("rotate_image_section"));

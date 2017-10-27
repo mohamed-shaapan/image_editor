@@ -32,6 +32,8 @@ private slots:
 
     void on_rotate_negative_ninty_clicked();
 
+    void on_zoom_slider_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
 };

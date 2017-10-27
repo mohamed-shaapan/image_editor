@@ -7,6 +7,8 @@
 // some global variables
 // ************************************************
 int slider_initial_value=0;
+int image_original_width=0;
+int image_original_height=0;
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -35,6 +37,10 @@ void MainWindow::on_load_button_clicked(){
     pixmap.load(file_name);
     ui->image_canvas->setPixmap(pixmap);
 
+    image_original_width=pixmap.width();
+    image_original_height=pixmap.height();
+    ui->zoom_slider->setValue(100);
+
 
 }
 
@@ -52,25 +58,8 @@ void MainWindow::on_save_button_clicked(){
 
 void MainWindow::on_apply_button_clicked(){
 
-    //QWidget::scroll(int dx, int dy);
-    //ui->image_container->setWidget(ui->image_canvas);
 
     qInfo( "C Style Info Message" );
-
-    //ui->image_canvas->scroll(500,100);
-    //ui->image_canvas->hide();
-
-
-    //ui->image_container->setBackgroundRole(QPalette::Dark);
-    //ui->image_container->setWidget(ui->image_canvas);
-    //setCentralWidget(ui->image_container);
-
-
-    //scrollArea = new QScrollArea;
-    //ui->scrollArea->setBackgroundRole(QPalette::Dark);
-    //ui->scrollArea->setWidget(ui->image_canvas);
-
-
 
 
 
@@ -86,7 +75,7 @@ void MainWindow::on_zoom_slider_sliderPressed(){
 
 void MainWindow::on_zoom_slider_sliderMoved(int position){
 
-    QPixmap pixmap_new;
+    /*QPixmap pixmap_new;
     // get image from canvas
     QPixmap pixmap = *(ui->image_canvas->pixmap());
     //
@@ -101,7 +90,7 @@ void MainWindow::on_zoom_slider_sliderMoved(int position){
     }
     // set ui image to new pixmap
     if(!pixmap_new.isNull())ui->image_canvas->setPixmap(pixmap_new);
-    //slider_initial_value=position;
+    //slider_initial_value=position;*/
 
 
 }
@@ -128,4 +117,23 @@ void MainWindow::on_rotate_negative_ninty_clicked()
     rm.rotate(-90);
     pixmap = pixmap.transformed(rm);
     ui->image_canvas->setPixmap(pixmap);
+}
+
+void MainWindow::on_zoom_slider_valueChanged(int value)
+{
+
+    QPixmap pixmap_new;
+    QPixmap pixmap = *(ui->image_canvas->pixmap());
+
+    int change = value;
+
+    int new_width=change*image_original_width/100;
+    int new_height=change*image_original_height/100;
+
+    pixmap_new = pixmap.scaled(new_width,new_height,Qt::KeepAspectRatio,Qt::SmoothTransformation);
+
+    // set ui image to new pixmap
+    if(!pixmap_new.isNull())ui->image_canvas->setPixmap(pixmap_new);
+    //slider_initial_value=value;
+
 }
