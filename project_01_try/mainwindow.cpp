@@ -155,21 +155,39 @@ void MainWindow::on_dial_valueChanged(int value)
     int change = value-old_angel ;
     overall_angel+=change ;
 
+    // branching now please
     QPixmap pixmap = *(ui->original_image->pixmap());
+
+    int slider_val = ui->zoom_slider->value();
+
+    // new zoom dimensions
+    int new_width=slider_val*image_original_width/100;
+    int new_height=slider_val*image_original_height/100;
+
+    // scale original image
+    QPixmap pixmap_new=pixmap.scaled(new_width,new_height,Qt::KeepAspectRatio,Qt::SmoothTransformation);
+
     QTransform trans  ;
-
-    ui->image_canvas->setPixmap(pixmap.transformed(trans.rotate(overall_angel)));
-
+    ui->image_canvas->setPixmap(pixmap_new.transformed(trans.rotate(overall_angel)));
     old_angel = value ;
 
 }
 
 void MainWindow::on_dial_sliderReleased()
 {
-    // branching
+    // branching now please
     QPixmap pixmap = *(ui->original_image->pixmap());
+
+    int slider_val = ui->zoom_slider->value();
+
+    // new zoom dimensions
+    int new_width=slider_val*image_original_width/100;
+    int new_height=slider_val*image_original_height/100;
+
+    // scale original image
+    QPixmap pixmap_new=pixmap.scaled(new_width,new_height,Qt::KeepAspectRatio,Qt::SmoothTransformation);
+
+    // rotate zoomed version
     QTransform trans  ;
-
-    ui->original_image->setPixmap(pixmap.transformed(trans.rotate(overall_angel)));
-
+    ui->original_image->setPixmap(pixmap_new.transformed(trans.rotate(overall_angel)));
 }
