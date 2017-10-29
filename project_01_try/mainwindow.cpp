@@ -73,7 +73,7 @@ void MainWindow::on_zoom_slider_sliderMoved(int position){
 }
 
 
-
+/*
 void MainWindow::on_rotate_ninty_clicked()
 {
 
@@ -102,7 +102,7 @@ void MainWindow::on_rotate_negative_ninty_clicked()
     pixmap = *(ui->original_image->pixmap());
     pixmap = pixmap.transformed(rm);
     ui->original_image->setPixmap(pixmap);
-}
+}*/
 
 void MainWindow::on_zoom_slider_valueChanged(int value)
 {
@@ -145,5 +145,31 @@ void MainWindow::on_apply_button_clicked(){
     ui->image_canvas->setPixmap(cropped);
     ui->original_image->setPixmap(cropped);
 
+
+}
+
+int old_angel = 0 , overall_angel = 0  ;
+
+void MainWindow::on_dial_valueChanged(int value)
+{
+    int change = value-old_angel ;
+    overall_angel+=change ;
+
+    QPixmap pixmap = *(ui->original_image->pixmap());
+    QTransform trans  ;
+
+    ui->image_canvas->setPixmap(pixmap.transformed(trans.rotate(overall_angel)));
+
+    old_angel = value ;
+
+}
+
+void MainWindow::on_dial_sliderReleased()
+{
+
+    QPixmap pixmap = *(ui->original_image->pixmap());
+    QTransform trans  ;
+
+    ui->original_image->setPixmap(pixmap.transformed(trans.rotate(overall_angel)));
 
 }

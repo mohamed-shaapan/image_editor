@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QDial>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -37,8 +38,7 @@ public:
     QGroupBox *zoom_section;
     QSlider *zoom_slider;
     QGroupBox *rotate_image_section;
-    QPushButton *rotate_ninty;
-    QPushButton *rotate_negative_ninty;
+    QDial *dial;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents_3;
     QLabel *image_canvas;
@@ -87,12 +87,13 @@ public:
         rotate_image_section = new QGroupBox(centralWidget);
         rotate_image_section->setObjectName(QStringLiteral("rotate_image_section"));
         rotate_image_section->setGeometry(QRect(20, 290, 181, 71));
-        rotate_ninty = new QPushButton(rotate_image_section);
-        rotate_ninty->setObjectName(QStringLiteral("rotate_ninty"));
-        rotate_ninty->setGeometry(QRect(110, 30, 41, 31));
-        rotate_negative_ninty = new QPushButton(rotate_image_section);
-        rotate_negative_ninty->setObjectName(QStringLiteral("rotate_negative_ninty"));
-        rotate_negative_ninty->setGeometry(QRect(30, 30, 41, 31));
+        dial = new QDial(rotate_image_section);
+        dial->setObjectName(QStringLiteral("dial"));
+        dial->setGeometry(QRect(60, 10, 50, 64));
+        dial->setMaximum(360);
+        dial->setSingleStep(10);
+        dial->setPageStep(20);
+        dial->setOrientation(Qt::Vertical);
         scrollArea = new QScrollArea(centralWidget);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
         scrollArea->setGeometry(QRect(220, 30, 701, 531));
@@ -136,8 +137,6 @@ public:
         redo_button->setText(QApplication::translate("MainWindow", "Redo", Q_NULLPTR));
         zoom_section->setTitle(QApplication::translate("MainWindow", "Zoom", Q_NULLPTR));
         rotate_image_section->setTitle(QApplication::translate("MainWindow", "Rotate Image", Q_NULLPTR));
-        rotate_ninty->setText(QApplication::translate("MainWindow", "+90", Q_NULLPTR));
-        rotate_negative_ninty->setText(QApplication::translate("MainWindow", "-90", Q_NULLPTR));
         image_canvas->setText(QString());
         original_image->setText(QString());
         crop_image_section->setTitle(QApplication::translate("MainWindow", "Crop Image", Q_NULLPTR));
