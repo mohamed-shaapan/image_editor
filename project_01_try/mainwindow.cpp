@@ -166,7 +166,7 @@ void MainWindow::on_dial_valueChanged(int value)
 
 void MainWindow::on_dial_sliderReleased()
 {
-
+    // branching
     QPixmap pixmap = *(ui->original_image->pixmap());
     QTransform trans  ;
 
