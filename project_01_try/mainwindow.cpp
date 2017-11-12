@@ -78,6 +78,9 @@ void MainWindow::on_zoom_slider_sliderPressed(){
 void MainWindow::on_zoom_slider_valueChanged(int value)
 {
 
+    // image not loaded yet
+    if(ui->image_canvas->pixmap() == NULL)return ;
+
     QPixmap pixmap_new;
     QPixmap pixmap = *(ui->image_canvas->pixmap());
 
@@ -96,6 +99,11 @@ void MainWindow::on_zoom_slider_valueChanged(int value)
 
 void MainWindow::on_zoom_slider_sliderReleased()
 {
+
+    // image not loaded yet
+    if(ui->image_canvas->pixmap() == NULL)return ;
+
+
     int width=ui->image_canvas->pixmap()->width();
     int height=ui->image_canvas->pixmap()->height();
 
