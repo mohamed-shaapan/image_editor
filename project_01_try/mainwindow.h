@@ -22,7 +22,7 @@ private slots:
 
     void on_apply_button_clicked();
 
-    void on_zoom_slider_sliderMoved(int position);
+    //void on_zoom_slider_sliderMoved(int position);
 
     void on_zoom_slider_sliderPressed();
 

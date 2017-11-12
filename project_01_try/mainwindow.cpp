@@ -29,80 +29,51 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::on_load_button_clicked(){
-
+    // use file chooser to get image
     QString file_name=QFileDialog::getOpenFileName(this, tr("choose"), "", tr("Images (*.png *.jpg *.bmp *.jpeg)"));
 
+    // user press cancel
+    if(file_name.isNull())return ;
 
+    // image loaded by user
     QPixmap pixmap;
     pixmap.load(file_name);
+
+    // set image of canvas
     ui->image_canvas->setPixmap(pixmap);
+    // store original image to be used later
     ui->original_image->setPixmap(pixmap);
 
+    // save width and height of original image
     image_original_width=pixmap.width();
     image_original_height=pixmap.height();
+
+    // set value of slider to max
     ui->zoom_slider->setValue(100);
-
-
-
 }
 
 void MainWindow::on_save_button_clicked(){
-
+    // use file chooser to get save directory
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Address Book"), "", tr("Address Book (*.abk);;All Files (*)"));
 
+    // user press cancel
+    if(fileName.isNull())return ;
+
+    // make a file to image
     QFile file(fileName);
+
+
     file.open(QIODevice::WriteOnly);
+    // write image in file
     ui->image_canvas->pixmap()->save(&file, "jpg");
-
-
-
 }
 
 
 
 void MainWindow::on_zoom_slider_sliderPressed(){
-
     int value=ui->zoom_slider->value();
-    qInfo( "\nSlider Value %d\n", value );
     slider_initial_value=value;
 }
-
-void MainWindow::on_zoom_slider_sliderMoved(int position){
-
-
-}
-
-
-/*
-void MainWindow::on_rotate_ninty_clicked()
-{
-
-    QPixmap pixmap = *(ui->image_canvas->pixmap());
-    QMatrix rm;
-
-    rm.rotate(90);
-    pixmap = pixmap.transformed(rm);
-    ui->image_canvas->setPixmap(pixmap);
-
-    pixmap = *(ui->original_image->pixmap());
-    pixmap = pixmap.transformed(rm);
-    ui->original_image->setPixmap(pixmap);
-
-}
-
-void MainWindow::on_rotate_negative_ninty_clicked()
-{
-    QPixmap pixmap = *(ui->image_canvas->pixmap());
-    QMatrix rm;
-
-    rm.rotate(-90);
-    pixmap = pixmap.transformed(rm);
-    ui->image_canvas->setPixmap(pixmap);
-
-    pixmap = *(ui->original_image->pixmap());
-    pixmap = pixmap.transformed(rm);
-    ui->original_image->setPixmap(pixmap);
-}*/
 
 void MainWindow::on_zoom_slider_valueChanged(int value)
 {
@@ -175,7 +146,7 @@ void MainWindow::on_dial_valueChanged(int value)
 
 void MainWindow::on_dial_sliderReleased()
 {
-    // branching now please
+    // get original image no pexilation
     QPixmap pixmap = *(ui->original_image->pixmap());
 
     int slider_val = ui->zoom_slider->value();
@@ -189,5 +160,6 @@ void MainWindow::on_dial_sliderReleased()
 
     // rotate zoomed version
     QTransform trans  ;
-    ui->original_image->setPixmap(pixmap_new.transformed(trans.rotate(overall_angel)));
+
+    ui->image_canvas->setPixmap(pixmap_new.transformed(trans.rotate(overall_angel)));
 }
