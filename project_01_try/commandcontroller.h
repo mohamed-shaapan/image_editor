@@ -15,6 +15,7 @@ public:
     void addCommand(Command *com);
     void undo(State* state);
     void redo(State* state);
+    void clear();
 };
 
 #endif // COMMANDCONTROLLER_H

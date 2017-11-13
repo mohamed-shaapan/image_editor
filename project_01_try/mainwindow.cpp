@@ -3,6 +3,7 @@
 #include "state.h"
 #include "commandcontroller.h"
 #include "zoom.h"
+#include "crop.h"
 #include "create.h"
 #include "rotate.h"
 #include <QFileDialog>
@@ -57,6 +58,9 @@ void MainWindow::on_load_button_clicked(){
 
     // set value of slider to max
     ui->zoom_slider->setValue(100);
+
+    //clear past undo/redo
+    CommandController::getInst().clear();
 
     // begin a new state
     state = new State(old_angel,overall_angel,ui->zoom_slider->value());
@@ -120,7 +124,6 @@ void MainWindow::on_zoom_slider_sliderReleased()
     // image not loaded yet
     if(ui->image_canvas->pixmap() == NULL)return ;
 
-
     int width=ui->image_canvas->pixmap()->width();
     int height=ui->image_canvas->pixmap()->height();
 
@@ -155,7 +158,13 @@ void MainWindow::on_apply_button_clicked(){
         QPixmap cropped=ui->scrollArea->grab(rect);
         ui->image_canvas->setPixmap(cropped);
         ui->original_image->setPixmap(cropped);
+        // make crop command
+        Crop* com = new Crop(state,CROP,ui,first,second);
+        // add command to undo/redo
+        CommandController::getInst().addCommand(com);
     }
+
+
 }
 
 

@@ -27,8 +27,8 @@ void CommandController::undo(State* state){
     if(pointer>=1){
         pointer--;
         for(int i=0;i<=pointer;i++){
-            execute(stack[pointer]);
-            state->setState(stack[pointer]->getState());
+            execute(stack[i]);
+            state->setState(stack[i]->getState());
         }
     }
 }
@@ -37,8 +37,8 @@ void CommandController::redo(State* state){
     if(pointer<=stack.size()-2){
         pointer++;
         for(int i=0;i<=pointer;i++){
-            execute(stack[pointer]);
-            state->setState(stack[pointer]->getState());
+            execute(stack[i]);
+            state->setState(stack[i]->getState());
         }
     }
 }
@@ -62,3 +62,6 @@ void CommandController::execute(Command* com){
     }
 }
 
+void CommandController::clear(){
+    this->stack.clear();
+}
