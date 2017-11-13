@@ -15,7 +15,7 @@ CommandController& CommandController::getInst(){
     return inst;
 }
 
-void CommandController::addCommand(Command com){
+void CommandController::addCommand(Command* com){
     while(!stack.empty() && pointer<stack.size()-1){
         stack.pop_back();
     }
@@ -27,19 +27,38 @@ void CommandController::undo(State* state){
     if(pointer>=1){
         pointer--;
         for(int i=0;i<=pointer;i++){
-            stack[pointer].excute();
-            state->setState(stack[pointer].getState());
+            execute(stack[pointer]);
+            state->setState(stack[pointer]->getState());
         }
     }
 }
 
 void CommandController::redo(State* state){
-    if(pointer<stack.size()-2){
+    if(pointer<=stack.size()-2){
         pointer++;
         for(int i=0;i<=pointer;i++){
-            stack[pointer].excute();
-            state->setState(stack[pointer].getState());
+            execute(stack[pointer]);
+            state->setState(stack[pointer]->getState());
         }
+    }
+}
+
+void CommandController::execute(Command* com){
+    switch (com->getType()) {
+    case ZOOM:
+        ((Zoom*)com)->excute();
+        break;
+    case CREATE:
+        ((Create*)com)->excute();
+        break;
+    case ROTATE:
+        ((Rotate*)com)->excute();
+        break;
+    case CROP:
+        ((Crop*)com)->excute();
+        break;
+    default:
+        break;
     }
 }
 

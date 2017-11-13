@@ -8,10 +8,11 @@ class CommandController
 private:
     CommandController();
     int pointer;
-    QVector<Command> stack;
+    QVector<Command*> stack;
+    void execute(Command* com);
 public:
     static CommandController& getInst();
-    void addCommand(Command com);
+    void addCommand(Command *com);
     void undo(State* state);
     void redo(State* state);
 };

@@ -20,7 +20,7 @@ public:
     Command(State* state, COMTYPE type);
     COMTYPE getType();
     State getState();
-    void excute();
+    void excute() ;
 };
 
 #endif // COMMAND_H

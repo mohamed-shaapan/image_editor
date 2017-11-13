@@ -62,7 +62,7 @@ void MainWindow::on_load_button_clicked(){
     state = new State(old_angel,overall_angel,ui->zoom_slider->value());
 
     // make create command
-    Create com(state,CREATE,ui);
+    Create* com = new Create(state,CREATE,ui);
 
     // add command to undo/redo
     CommandController::getInst().addCommand(com);
@@ -137,7 +137,7 @@ void MainWindow::on_zoom_slider_sliderReleased()
     state = new State(old_angel,overall_angel,ui->zoom_slider->value());
 
     // make rotate command
-    Zoom com(state,ZOOM,ui,width,height);
+    Zoom* com = new Zoom(state,ZOOM,ui,width,height);
 
     // add command to undo/redo
     CommandController::getInst().addCommand(com);
@@ -207,7 +207,7 @@ void MainWindow::on_dial_sliderReleased()
     state = new State(old_angel,overall_angel,ui->zoom_slider->value());
 
     // make rotate command
-    Rotate com(state,ROTATE,ui,new_width,new_height,overall_angel);
+    Rotate* com = new Rotate(state,ROTATE,ui,new_width,new_height,overall_angel);
 
     // add command to undo/redo
     CommandController::getInst().addCommand(com);
