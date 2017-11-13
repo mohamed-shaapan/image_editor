@@ -36,6 +36,10 @@ private slots:
 
     void on_dial_sliderReleased();
 
+    void on_undo_button_released();
+
+    void on_redo_button_released();
+
 private:
     Ui::MainWindow *ui;
 };

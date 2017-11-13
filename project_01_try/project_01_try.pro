@@ -25,10 +25,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    command.cpp \
+    zoom.cpp \
+    rotate.cpp \
+    commandcontroller.cpp \
+    state.cpp \
+    create.cpp \
+    image_processing.cpp \
+    crop.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    command.h \
+    zoom.h \
+    rotate.h \
+    commandcontroller.h \
+    state.h \
+    create.h \
+    image_processing.h \
+    crop.h
 
 FORMS += \
         mainwindow.ui
