@@ -64,4 +64,5 @@ void CommandController::execute(Command* com){
 
 void CommandController::clear(){
     this->stack.clear();
+    pointer = 0 ;
 }
