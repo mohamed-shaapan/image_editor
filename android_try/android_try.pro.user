@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.4.1, 2017-11-14T13:28:50. -->
+<!-- Written by QtCreator 4.4.1, 2017-11-14T20:07:34. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -948,8 +948,8 @@
     <valuelist type="QVariantList" key="Android.PostFinishShellCmdListKey"/>
     <valuelist type="QVariantList" key="Android.PreStartShellCmdListKey"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">android_try</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.AndroidRunConfiguration:/home/omar/Qt-workspace/android_try/android_try.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">android_try2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.AndroidRunConfiguration:/home/omar/git/image_editor/android_try/android_try.pro</value>
     <value type="QString" key="QMakeProjectManager.QmakeAndroidRunConfiguration.ProFile">android_try.pro</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>

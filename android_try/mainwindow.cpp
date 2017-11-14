@@ -5,6 +5,7 @@
 #include <QStandardPaths>
 #include "androidimagepicker.h"
 #include <QScreen>
+#include <QInputDialog>
 
 // some global variables
 // ************************************************
@@ -56,10 +57,9 @@ void MainWindow::edit_scene(){
     ui->original_image->hide();
 }
 void MainWindow::load_is_done(QString imagePath){
-    qDebug() << "Loading finished " << imagePath.remove(0,7) << endl;
     curr_imagePath = imagePath;
     QPixmap pixmap;
-    pixmap.load(imagePath);
+    pixmap.load( imagePath.remove(0,7) );
     ui->image_canvas->setPixmap(pixmap);
     ui->original_image->setPixmap(pixmap);
 
@@ -67,13 +67,50 @@ void MainWindow::load_is_done(QString imagePath){
     image_original_height=pixmap.height();
     ui->zoom_slider->setValue(100);
 }
+QString *path,*name;
+void getImageName(QString image){
+    int i;
+    path = new QString("");
+    name = new QString("");
+    for(i = image.length()-1;i >= 0 ;i--){
+        if(image[i] == '/')
+            break;
+        name->push_front(image[i]);
+    }
+    for(int j = 0; j < i;j++){
+        path->append(image[j]);
+    }
+}
 void MainWindow::on_save_button_clicked(){
+//    bool dialogResult;
+//    getImageName(curr_imagePath);
+//    QInputDialog *renameDialog = new QInputDialog();
+//    QString result = renameDialog->getText(0, "Save Image", "New name:", QLineEdit::Normal,
+//                                           *name, &dialogResult);
 
-    qDebug() << "save " << curr_imagePath << endl;
-    ui->image_canvas->pixmap()->save(curr_imagePath,0,-1);
+//    if(result.length() > 0 && dialogResult){
+//        path->append('/');
+//        path->append(result);
+//        qDebug() << *path <<" OOOOOOO " << curr_imagePath << endl;
+//        ui->image_canvas->pixmap()->save(*path,0,-1);
+//    }
+//    else
+        ui->image_canvas->pixmap()->save(curr_imagePath,0,-1);
+//        QBuffer buffer;
+//        buffer.open(QIODevice::WriteOnly);
+//        ui->image_canvas->pixmap()->save(&buffer, 0 ,-1);
+//        buffer.close();
+
+//        QFile file( curr_imagePath  );
+//        if( file.open( QIODevice::WriteOnly ) )
+//        {
+//            qDebug() << file.isOpen() << endl;
+//            file.write( buffer.buffer() );
+//            qDebug() << " Done  " << endl;
+//            file.close();
+//        }
 
 }
-
 
 
 void MainWindow::on_zoom_slider_sliderPressed(){
@@ -157,7 +194,7 @@ void MainWindow::on_dial_sliderReleased()
 
     // rotate zoomed version
     QTransform trans  ;
-    ui->original_image->setPixmap(pixmap_new.transformed(trans.rotate(overall_angel)));
+    ui->image_canvas->setPixmap(pixmap_new.transformed(trans.rotate(overall_angel)));
 }
 
 void MainWindow::on_back_button_clicked()
@@ -168,27 +205,9 @@ void MainWindow::on_back_button_clicked()
 void MainWindow::on_crop_button_clicked()
 {
     // 01 - obtain coordinates
-    QRect rect(pading,pading,screen->availableSize().width()-pading,(screen->availableSize().height()*3)/4);
-    qDebug() << rect << endl;
+    QRect rect(pading,pading,screen->availableSize().width()-100,
+               (screen->availableSize().height()*3)/4 -90);
     QPixmap cropped=ui->scrollArea->grab(rect);
     ui->image_canvas->setPixmap(cropped);
     ui->original_image->setPixmap(cropped);
-}
-void MainWindow::touchEvent(QTouchEvent *ev)
-{
-    qDebug() << "tasd;klfads" << endl;
-  switch (ev->type())
-  {
-    case QEvent::TouchBegin:
-        qDebug() << "touch begin" << endl;
-        break;
-    case QEvent::TouchEnd:
-        qDebug() << "touch end" << endl;
-        break;
-    case QEvent::TouchUpdate:
-    {
-        qDebug() << "touch update" << endl;
-        break;
-    }
-  }
 }

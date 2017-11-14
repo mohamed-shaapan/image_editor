@@ -39,3 +39,6 @@ FORMS += \
 
 CONFIG += mobility
 MOBILITY =
+
+DISTFILES += \
+    AndroScannerInJava.java
