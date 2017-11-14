@@ -16,6 +16,7 @@ public:
     void undo(State* state);
     void redo(State* state);
     void clear();
+    void reset(State* state);
 };
 
 #endif // COMMANDCONTROLLER_H

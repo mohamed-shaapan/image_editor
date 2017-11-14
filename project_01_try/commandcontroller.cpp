@@ -70,6 +70,13 @@ void CommandController::execute(Command* com){
     }
 }
 
+void CommandController::reset(State* state){
+    pointer = 0 ;
+    while(stack.size()>1)stack.pop_back();
+    execute(stack[0]);
+    state->setState(stack[0]->getState());
+}
+
 void CommandController::clear(){
     this->stack.clear();
     pointer = 0 ;

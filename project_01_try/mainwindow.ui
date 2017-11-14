@@ -209,8 +209,8 @@
    <widget class="image_processing" name="image_canvas">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>540</y>
+      <x>220</x>
+      <y>30</y>
       <width>51</width>
       <height>41</height>
      </rect>
@@ -270,8 +270,8 @@
    <widget class="image_processing" name="backup_image">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>480</y>
+      <x>110</x>
+      <y>540</y>
       <width>51</width>
       <height>41</height>
      </rect>
@@ -281,6 +281,19 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="reset_button">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>460</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>reset</string>
     </property>
    </widget>
   </widget>

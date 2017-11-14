@@ -45,6 +45,14 @@ void MainWindow::regainState(){
     ui->zoom_slider->setValue(state->slider_value);
 }
 
+void MainWindow::on_reset_button_clicked(){
+    // hide the select border
+    ui->image_canvas->hide_border();
+    ui->original_image->hide_border();
+
+    CommandController::getInst().reset(state);
+    regainState();
+}
 
 void MainWindow::on_load_button_clicked(){
     // use file chooser to get image
@@ -87,6 +95,10 @@ void MainWindow::on_load_button_clicked(){
 }
 
 void MainWindow::on_save_button_clicked(){
+    // hide the select border
+    ui->image_canvas->hide_border();
+    ui->original_image->hide_border();
+
     // use file chooser to get save directory
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Address Book"), "", tr("Address Book (*.abk);;All Files (*)"));
 
@@ -99,18 +111,25 @@ void MainWindow::on_save_button_clicked(){
 
     file.open(QIODevice::WriteOnly);
     // write image in file
-    ui->image_canvas->pixmap()->save(&file, "jpg");
+    ui->image_canvas->pixmap()->save(&file, 0, -1);
 }
 
 
 
 void MainWindow::on_zoom_slider_sliderPressed(){
+    // hide the select border
+    ui->image_canvas->hide_border();
+    ui->original_image->hide_border();
+
     int value=ui->zoom_slider->value();
     slider_initial_value=value;
 }
 
 void MainWindow::on_zoom_slider_valueChanged(int value)
 {
+    // hide the select border
+    ui->image_canvas->hide_border();
+    ui->original_image->hide_border();
 
     // image not loaded yet
     if(ui->image_canvas->pixmap() == NULL)return ;
@@ -128,7 +147,6 @@ void MainWindow::on_zoom_slider_valueChanged(int value)
     // set ui image to new pixmap
     if(!pixmap_new.isNull())ui->image_canvas->setPixmap(pixmap_new);
     //slider_initial_value=value;
-
 }
 
 void MainWindow::on_zoom_slider_sliderReleased()
@@ -157,6 +175,8 @@ void MainWindow::on_zoom_slider_sliderReleased()
 
     // add command to undo/redo
     CommandController::getInst().addCommand(com);
+
+
 }
 
 
@@ -167,10 +187,16 @@ void MainWindow::on_apply_button_clicked(){
         ui->image_canvas->select = false;
         if(first != second)
         {
+            int n1 = ui->image_canvas->pixmap()->height();
+            int n2 = (ui->scrollArea->height()-n1)/2;
+            if(n2>0){
+                first.setY(first.y()-n2);
+                second.setY(second.y()-n2);
+            }
             QRect rect(first,second);
             ui->image_canvas->hide_border();
             ui->original_image->hide_border();
-            QPixmap cropped=ui->scrollArea->grab(rect);
+            QPixmap cropped=ui->image_canvas->pixmap()->copy(rect);
             ui->image_canvas->setPixmap(cropped);
             ui->original_image->setPixmap(cropped);
 
@@ -191,6 +217,7 @@ void MainWindow::on_apply_button_clicked(){
             Crop* com = new Crop(state_new,CROP,ui,first,second);
             // add command to undo/redo
             CommandController::getInst().addCommand(com);
+            //ui->zoom_slider->setValue(ui->zoom_slider->maximum()/2);
         }
     }
 }
@@ -199,6 +226,10 @@ void MainWindow::on_apply_button_clicked(){
 
 void MainWindow::on_dial_valueChanged(int value)
 {
+    // hide the select border
+    ui->image_canvas->hide_border();
+    ui->original_image->hide_border();
+
     int change = value-old_angel ;
     overall_angel+=change ;
 

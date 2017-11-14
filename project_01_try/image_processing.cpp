@@ -6,6 +6,8 @@
 #include <QPixmap>
 #include <QScrollArea>
 
+using namespace std ;
+
 image_processing::image_processing(QWidget *parent): QLabel( parent)
 {
     rubberBand = new QRubberBand(QRubberBand::Rectangle , this);
@@ -14,12 +16,18 @@ image_processing::image_processing(QWidget *parent): QLabel( parent)
 
 QPoint image_processing:: get_first_point()
 {
-    return first_point;
+    int x = min(first_point.x(),second_point.x());
+    int y = min(first_point.y(),second_point.y());
+    QPoint point(x,y);
+    return point;
 }
 
 QPoint image_processing:: get_second_point()
 {
-    return second_point;
+    int x = max(first_point.x(),second_point.x());
+    int y = max(first_point.y(),second_point.y());
+    QPoint point(x,y);
+    return point;
 }
 
 void image_processing:: hide_border()
@@ -48,7 +56,7 @@ void image_processing::mouseReleaseEvent(QMouseEvent *event)
 {
     if(this->underMouse()){
         second_point = event->pos();
-        rubberBand->setGeometry(QRect(first_point, second_point));
+        rubberBand->setGeometry(QRect(get_first_point(), get_second_point()));
         rubberBand->show();
         select = true;
     }
