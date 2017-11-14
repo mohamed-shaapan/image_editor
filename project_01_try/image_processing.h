@@ -18,9 +18,9 @@ protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
-    //void keyPressEvent(QKeyEvent *event);
 
 public:
+    bool select;
     image_processing(QWidget *parent = 0);
     QPoint get_first_point();
     QPoint get_second_point();

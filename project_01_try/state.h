@@ -4,11 +4,11 @@
 
 class State
 {
-private:
-    int old_angel = 0 , overall_angel = 0  , slider_value ;
 public:
+    int old_angel = 0 , overall_angel = 0  , slider_value ;
+    int image_original_width,image_original_height;
     State();
-    State(int old_angel ,int overall_angel ,int slider_value);
+    State(int image_original_width,int image_original_height,int old_angel,int overall_angel ,int slider_value);
     void setState(State st);
 };
 

@@ -9,6 +9,7 @@
 image_processing::image_processing(QWidget *parent): QLabel( parent)
 {
     rubberBand = new QRubberBand(QRubberBand::Rectangle , this);
+    select = false;
 }
 
 QPoint image_processing:: get_first_point()
@@ -49,5 +50,6 @@ void image_processing::mouseReleaseEvent(QMouseEvent *event)
         second_point = event->pos();
         rubberBand->setGeometry(QRect(first_point, second_point));
         rubberBand->show();
+        select = true;
     }
 }

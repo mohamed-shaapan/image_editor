@@ -16,11 +16,19 @@ CommandController& CommandController::getInst(){
 }
 
 void CommandController::addCommand(Command* com){
+    bool fl = false ;
     while(!stack.empty() && pointer<stack.size()-1){
         stack.pop_back();
+        fl =true ;
     }
     this->stack.push_back(com);
     pointer=stack.size()-1;
+    // retain state if added in mid
+    if(fl){
+        for(int i=0;i<=pointer;i++){
+            execute(stack[i]);
+        }
+    }
 }
 
 void CommandController::undo(State* state){

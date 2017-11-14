@@ -8,6 +8,8 @@ Create::Create(State *state, COMTYPE type, Ui::MainWindow *ui) : Command(state,t
 }
 
 void Create::excute(){
-    QPixmap cop(*this->ui->backup_image->pixmap());
-    this->ui->original_image->setPixmap(cop);
+    QPixmap cop1(*this->ui->backup_image->pixmap());
+    QPixmap cop2(*this->ui->backup_image->pixmap());
+    this->ui->original_image->setPixmap(cop1);
+    this->ui->image_canvas->setPixmap(cop2);
 }

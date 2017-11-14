@@ -42,6 +42,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    void regainState();
 };
 
 #endif // MAINWINDOW_H
