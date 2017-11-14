@@ -50,6 +50,9 @@
      <property name="text">
       <string>save</string>
      </property>
+     <property name="shortcut">
+      <string>Ctrl+S</string>
+     </property>
     </widget>
     <widget class="QPushButton" name="load_button">
      <property name="geometry">
@@ -62,6 +65,9 @@
      </property>
      <property name="text">
       <string>load</string>
+     </property>
+     <property name="shortcut">
+      <string>Ctrl+L</string>
      </property>
     </widget>
    </widget>
@@ -89,6 +95,9 @@
      <property name="text">
       <string>Undo</string>
      </property>
+     <property name="shortcut">
+      <string>Ctrl+Z</string>
+     </property>
     </widget>
     <widget class="QPushButton" name="redo_button">
      <property name="geometry">
@@ -101,6 +110,9 @@
      </property>
      <property name="text">
       <string>Redo</string>
+     </property>
+     <property name="shortcut">
+      <string>Ctrl+Y</string>
      </property>
     </widget>
    </widget>
@@ -265,6 +277,9 @@
      <property name="text">
       <string>Crop Canvas</string>
      </property>
+     <property name="shortcut">
+      <string>Ctrl+X</string>
+     </property>
     </widget>
    </widget>
    <widget class="image_processing" name="backup_image">
@@ -294,6 +309,9 @@
     </property>
     <property name="text">
      <string>reset</string>
+    </property>
+    <property name="shortcut">
+     <string>Ctrl+E</string>
     </property>
    </widget>
   </widget>
