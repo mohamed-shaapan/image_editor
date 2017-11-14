@@ -16,13 +16,15 @@ public:
     ~MainWindow();
 
 private slots:
+    void on_reset_button_clicked();
+
     void on_load_button_clicked();
 
     void on_save_button_clicked();
 
     void on_apply_button_clicked();
 
-    void on_zoom_slider_sliderMoved(int position);
+    //void on_zoom_slider_sliderMoved(int position);
 
     void on_zoom_slider_sliderPressed();
 
@@ -36,8 +38,13 @@ private slots:
 
     void on_dial_sliderReleased();
 
+    void on_undo_button_released();
+
+    void on_redo_button_released();
+
 private:
     Ui::MainWindow *ui;
+    void regainState();
 };
 
 #endif // MAINWINDOW_H

@@ -50,6 +50,9 @@
      <property name="text">
       <string>save</string>
      </property>
+     <property name="shortcut">
+      <string>Ctrl+S</string>
+     </property>
     </widget>
     <widget class="QPushButton" name="load_button">
      <property name="geometry">
@@ -62,6 +65,9 @@
      </property>
      <property name="text">
       <string>load</string>
+     </property>
+     <property name="shortcut">
+      <string>Ctrl+L</string>
      </property>
     </widget>
    </widget>
@@ -89,6 +95,9 @@
      <property name="text">
       <string>Undo</string>
      </property>
+     <property name="shortcut">
+      <string>Ctrl+Z</string>
+     </property>
     </widget>
     <widget class="QPushButton" name="redo_button">
      <property name="geometry">
@@ -101,6 +110,9 @@
      </property>
      <property name="text">
       <string>Redo</string>
+     </property>
+     <property name="shortcut">
+      <string>Ctrl+Y</string>
      </property>
     </widget>
    </widget>
@@ -200,17 +212,17 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>685</width>
-       <height>515</height>
+       <width>689</width>
+       <height>519</height>
       </rect>
      </property>
     </widget>
    </widget>
-   <widget class="QLabel" name="image_canvas">
+   <widget class="image_processing" name="image_canvas">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>540</y>
+      <x>220</x>
+      <y>30</y>
       <width>51</width>
       <height>41</height>
      </rect>
@@ -222,7 +234,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="original_image">
+   <widget class="image_processing" name="original_image">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -265,11 +277,53 @@
      <property name="text">
       <string>Crop Canvas</string>
      </property>
+     <property name="shortcut">
+      <string>Ctrl+X</string>
+     </property>
     </widget>
+   </widget>
+   <widget class="image_processing" name="backup_image">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>540</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="reset_button">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>460</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>reset</string>
+    </property>
+    <property name="shortcut">
+     <string>Ctrl+E</string>
+    </property>
    </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>image_processing</class>
+   <extends>QLabel</extends>
+   <header location="global">image_processing.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
