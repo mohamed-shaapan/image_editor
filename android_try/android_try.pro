@@ -41,4 +41,5 @@ CONFIG += mobility
 MOBILITY =
 
 DISTFILES += \
-    AndroScannerInJava.java
+    AndroScannerInJava.java \
+    Manifest.xml

@@ -82,34 +82,21 @@ void getImageName(QString image){
     }
 }
 void MainWindow::on_save_button_clicked(){
-//    bool dialogResult;
-//    getImageName(curr_imagePath);
-//    QInputDialog *renameDialog = new QInputDialog();
-//    QString result = renameDialog->getText(0, "Save Image", "New name:", QLineEdit::Normal,
-//                                           *name, &dialogResult);
+    bool dialogResult;
+    getImageName(curr_imagePath);
+    QInputDialog *renameDialog = new QInputDialog();
+    QString result = renameDialog->getText(0, "Save Image", "New name:", QLineEdit::Normal,
+                                           *name, &dialogResult);
 
-//    if(result.length() > 0 && dialogResult){
-//        path->append('/');
-//        path->append(result);
-//        qDebug() << *path <<" OOOOOOO " << curr_imagePath << endl;
-//        ui->image_canvas->pixmap()->save(*path,0,-1);
-//    }
-//    else
-        ui->image_canvas->pixmap()->save(curr_imagePath,0,-1);
-//        QBuffer buffer;
-//        buffer.open(QIODevice::WriteOnly);
-//        ui->image_canvas->pixmap()->save(&buffer, 0 ,-1);
-//        buffer.close();
+    if(result.length() > 0 && dialogResult){
+        *name = result;
+    }
+    QString tmpString = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
 
-//        QFile file( curr_imagePath  );
-//        if( file.open( QIODevice::WriteOnly ) )
-//        {
-//            qDebug() << file.isOpen() << endl;
-//            file.write( buffer.buffer() );
-//            qDebug() << " Done  " << endl;
-//            file.close();
-//        }
+    if (ui->image_canvas->pixmap()->save(tmpString+ *name, 0,-1)) qDebug() << "Saved ";
+    else qDebug() << "Not Saved ";
 
+    qDebug() << tmpString+*name << endl;
 }
 
 
