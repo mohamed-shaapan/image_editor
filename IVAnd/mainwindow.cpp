@@ -101,9 +101,11 @@ void MainWindow::load_is_done(QString imagePath){
     //clear past undo/redo
     CommandController::getInst().clear();
 
+    ui->dial->setValue(0);
+
     // begin a new state
-    state = new State(image_original_width,image_original_height,old_angel,overall_angel,ui->zoom_slider->value());
-    State* state_new = new State(image_original_width,image_original_height,old_angel,overall_angel,ui->zoom_slider->value());
+    state = new State(image_original_width,image_original_height,0,0,ui->zoom_slider->value());
+    State* state_new = new State(image_original_width,image_original_height,0,0,ui->zoom_slider->value());
 
     // make create command
     Create* com = new Create(state_new,CREATE,ui);
@@ -132,6 +134,10 @@ void MainWindow::on_save_button_clicked(){
 
     if(result.length() > 0 && dialogResult){
         *name = result;
+        if(!(*name).contains(".",Qt::CaseInsensitive)){
+            *name += ".png";
+            qDebug() << *name << endl;
+        }
     }
     QString tmpString = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
 
@@ -164,7 +170,7 @@ void MainWindow::on_zoom_slider_valueChanged(int value)
     if(ui->image_canvas->pixmap() == NULL)return ;
 
     QPixmap pixmap_new;
-    QPixmap pixmap = *(ui->image_canvas->pixmap());
+    QPixmap pixmap = *(ui->original_image->pixmap());
 
     int change = value;
 
@@ -173,8 +179,9 @@ void MainWindow::on_zoom_slider_valueChanged(int value)
 
     pixmap_new = pixmap.scaled(new_width,new_height,Qt::KeepAspectRatio,Qt::SmoothTransformation);
 
+    QTransform trans;
     // set ui image to new pixmap
-    if(!pixmap_new.isNull())ui->image_canvas->setPixmap(pixmap_new);
+    if(!pixmap_new.isNull())ui->image_canvas->setPixmap(pixmap_new.transformed(trans.rotate(overall_angel)));
     //slider_initial_value=value;
 
 }
