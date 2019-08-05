@@ -78,13 +78,14 @@ void MainWindow::on_load_button_clicked(){
 
     // set value of slider to max
     ui->zoom_slider->setValue(100);
+    ui->dial->setValue(0);
 
     //clear past undo/redo
     CommandController::getInst().clear();
 
     // begin a new state
-    state = new State(image_original_width,image_original_height,old_angel,overall_angel,ui->zoom_slider->value());
-    State* state_new = new State(image_original_width,image_original_height,old_angel,overall_angel,ui->zoom_slider->value());
+    state = new State(image_original_width,image_original_height,0,0,ui->zoom_slider->value());
+    State* state_new = new State(image_original_width,image_original_height,0,0,ui->zoom_slider->value());
 
     // make create command
     Create* com = new Create(state_new,CREATE,ui);
